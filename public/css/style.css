@@ -1,0 +1,138 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  height: 5rem;
+}
+
+.fa-earth-americas {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222 !important;
+}
+
+.navbar-nav {
+  font-size: large;
+}
+
+.navbar-nav:hover {
+  color: #fe424d !important;
+}
+
+/* footer */
+.f-info-links a {
+  text-decoration: none;
+  color: #222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brands {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-socials i {
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+}
+
+.f-info {
+  text-align: center;
+  height: 8rem;
+  background-color: #ebebeb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+}
+/* cards */
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+/* card effect */
+
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+/* new listing */
+.btn1 {
+  background-color: #fe424d !important;
+}
+.add-btn {
+  background-color: #fe424d !important;
+}
+
+.edit-btn {
+  background-color: #fe424d !important;
+}
+
+/* show page */
+
+.show-img {
+  height: 30vh;
+}
+.show-card {
+  margin-left: 5rem;
+}
+
+/* icons */
+
+.icons {
+  opacity: 0; /* faded by default */
+  transition: opacity 0.3s ease;
+}
+.nav-link:hover .icons {
+  opacity: 1; /* fully visible on hover */
+}
+
+/* map */
+
+#map {
+  height: 400px;
+  width: 115vh;
+}

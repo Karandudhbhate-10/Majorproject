@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate") %>
+
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body p-4">
+            <h3 class="text-center mb-4">Signup on Wanderlust</h3>
+
+            <!-- Flash Messages -->
+            <% if (locals.error && error.length > 0) { %>
+            <div class="alert alert-danger"><%= error %></div>
+            <% } %> <% if (locals.success && success.length > 0) { %>
+            <div class="alert alert-success"><%= success %></div>
+            <% } %>
+
+            <!-- Signup Form -->
+            <form
+              action="/signup"
+              method="POST"
+              class="needs-validation"
+              novalidate
+            >
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  placeholder="Enter username"
+                  required
+                />
+                <div class="valid-feedback">looks good</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn1 btn-primary">
+                  Sign Up
+                </button>
+              </div>
+            </form>
+
+            <p class="text-center mt-3">
+              Already have an account?
+              <a href="/login">Login here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
