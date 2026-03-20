@@ -57,14 +57,15 @@ store.on("error", function (e) {
 });
 const sessionOptions = {
   store: store,
-  name: "session", // default is connect.sid
-  secret: process.env.SECRET,
+  name: "session",
+  secret: process.env.SECRET || "devsecret",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
+    secure: false,     // 🔥 fix
+    sameSite: "lax",   // 🔥 fix
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   },
 };
 
