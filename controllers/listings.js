@@ -54,16 +54,23 @@ module.exports.createListing = async (req, res, next) => {
     })
     .send();
 
+ 
+  if (!req.file) {
+    req.flash("error", "Image upload failed or missing");
+    return res.redirect("/listings/new");
+  }
+
   let url = req.file.path;
   let filename = req.file.filename;
+
   const newlisting = new Listing(req.body.listing);
   newlisting.owner = req.user._id;
   newlisting.image = { url, filename };
 
   newlisting.geometry = response.body.features[0].geometry;
 
-  let savelisting = await newlisting.save();
-  console.log(savelisting);
+  await newlisting.save();
+
   req.flash("success", "New Listing Created!");
   res.redirect("/listings");
 };
