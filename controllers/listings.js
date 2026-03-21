@@ -24,6 +24,8 @@ module.exports.index = async (req, res) => {
   res.render("listings/index", { listings, search, category });
 };
 
+
+
 module.exports.renderNewForm = (req, res) => {
   res.render("listings/new.ejs");
 };
@@ -46,34 +48,25 @@ module.exports.showListing = async (req, res) => {
   res.render("listings/show.ejs", { listing });
 };
 
-module.exports.createListing = async (req, res, next) => {
-  let response = await geocodingClient
-    .forwardGeocode({
-      query: req.body.listing.location,
-      limit: 1,
-    })
-    .send();
 
- 
-  if (!req.file) {
-    req.flash("error", "Image upload failed or missing");
-    return res.redirect("/listings/new");
-  }
+module.exports.createListing = async (req, res) => {
+  let response = await geocodingClient.forwardGeocode({
+    query: req.body.listing.location,
+    limit: 1,
+  }).send();
 
   let url = req.file.path;
   let filename = req.file.filename;
-
-  const newlisting = new Listing(req.body.listing);
-  newlisting.owner = req.user._id;
-  newlisting.image = { url, filename };
-
-  newlisting.geometry = response.body.features[0].geometry;
-
-  await newlisting.save();
-
-  req.flash("success", "New Listing Created!");
+  const newListing = new Listing(req.body.listing);
+  newListing.owner = req.user._id;
+  newListing.image = { url, filename };
+  newListing.geometry = response.body.features[0].geometry;
+  let savedListing = await newListing.save();
+  console.log(savedListing);
+  req.flash("success", "New listing created!");
   res.redirect("/listings");
 };
+
 
 module.exports.renderEditForm = async (req, res) => {
   let { id } = req.params;
