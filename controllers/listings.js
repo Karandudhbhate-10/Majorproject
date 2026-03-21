@@ -48,23 +48,41 @@ module.exports.showListing = async (req, res) => {
   res.render("listings/show.ejs", { listing });
 };
 
-
 module.exports.createListing = async (req, res) => {
-  let response = await geocodingClient.forwardGeocode({
-    query: req.body.listing.location,
-    limit: 1,
-  }).send();
+  try {
+    let response = await geocodingClient.forwardGeocode({
+      query: req.body.listing.location,
+      limit: 1,
+    }).send();
+    
+    if (!response.body.features.length) {
+      req.flash("error", "Invalid location");
+      return res.redirect("/listings/new");
+    }
+    
+    if (!req.file) {
+      req.flash("error", "Image upload failed");
+      return res.redirect("/listings/new");
+    }
 
-  let url = req.file.path;
-  let filename = req.file.filename;
-  const newListing = new Listing(req.body.listing);
-  newListing.owner = req.user._id;
-  newListing.image = { url, filename };
-  newListing.geometry = response.body.features[0].geometry;
-  let savedListing = await newListing.save();
-  console.log(savedListing);
-  req.flash("success", "New listing created!");
-  res.redirect("/listings");
+    let url = req.file.path;
+    let filename = req.file.filename;
+
+    const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
+    newListing.image = { url, filename };
+    newListing.geometry = response.body.features[0].geometry;
+
+    await newListing.save();
+
+    req.flash("success", "New listing created!");
+    res.redirect("/listings");
+
+  } catch (err) {
+    console.log(err);
+    req.flash("error", "Something went wrong");
+    res.redirect("/listings/new");
+  }
 };
 
 
