@@ -79,10 +79,10 @@ module.exports.createListing = async (req, res) => {
     res.redirect("/listings");
 
   } catch (err) {
-    console.log(err);
-    req.flash("error", "Something went wrong");
-    res.redirect("/listings/new");
-  }
+  console.log("ERROR:", err);  
+  req.flash("error", err.message);  
+  res.redirect("/listings/new");
+}
 };
 
 
