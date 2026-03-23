@@ -104,6 +104,14 @@ app.use((req, res, next) => {
 //   res.send(registeredUser);
 // });
 
+app.get("/privacy", (req, res) => {
+  res.render("privacy");
+});
+
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
