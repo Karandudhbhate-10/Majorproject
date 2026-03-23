@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Terms & Conditions | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .container-box {
+        background: white;
+        padding: 30px;
+        margin-top: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-box">
+        <h1>Terms & Conditions</h1>
+        <p class="text-muted">Last updated: <%= new Date().toDateString() %></p>
+
+        <p>
+          Welcome to <strong>Wanderlust</strong>. By using our platform, you
+          agree to the following terms.
+        </p>
+
+        <h2>1. Use of Service</h2>
+        <p>
+          You must use Wanderlust only for lawful purposes and follow all
+          applicable laws.
+        </p>
+
+        <h2>2. User Accounts</h2>
+        <ul>
+          <li>You are responsible for your account</li>
+          <li>Keep your login credentials secure</li>
+        </ul>
+
+        <h2>3. Listings</h2>
+        <p>
+          Users can create and manage listings. You are responsible for the
+          accuracy of your content.
+        </p>
+
+        <h2>4. Prohibited Activities</h2>
+        <ul>
+          <li>Fraud or misleading content</li>
+          <li>Harassment or abuse</li>
+          <li>Illegal activities</li>
+        </ul>
+
+        <h2>5. Limitation of Liability</h2>
+        <p>
+          Wanderlust is not responsible for user-generated content or
+          third-party interactions.
+        </p>
+
+        <h2>6. Termination</h2>
+        <p>We may suspend or terminate accounts that violate our policies.</p>
+
+        <h2>7. Changes to Terms</h2>
+        <p>
+          We may update these terms at any time. Continued use means acceptance.
+        </p>
+
+        <h2>8. Contact</h2>
+        <p>Email us at <strong>support@wanderlust.com</strong></p>
+
+        <a href="/listings" class="btn btn-primary mt-3">Back to Home</a>
+      </div>
+    </div>
+  </body>
+</html>
